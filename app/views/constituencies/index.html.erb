@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Constituencies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Mandates</th>
+      <th>Ballots</th>
+      <th>Voters</th>
+      <th>Province</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @constituencies.each do |constituency| %>
+      <tr>
+        <td><%= constituency.number %></td>
+        <td><%= constituency.mandates %></td>
+        <td><%= constituency.ballots %></td>
+        <td><%= constituency.voters %></td>
+        <td><%= constituency.province.name %></td>
+        <td><%= link_to 'Show', constituency %></td>
+        <td><%= link_to 'Edit', edit_constituency_path(constituency) %></td>
+        <td><%= link_to 'Destroy', constituency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Constituency', new_constituency_path %>

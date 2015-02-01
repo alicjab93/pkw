@@ -1,0 +1,37 @@
+<%= form_for(@constituency) do |f| %>
+  <% if @constituency.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@constituency.errors.count, "error") %> prohibited this constituency from being saved:</h2>
+
+      <ul>
+      <% @constituency.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.number_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :mandates %><br>
+    <%= f.number_field :mandates %>
+  </div>
+  <div class="field">
+    <%= f.label :ballots %><br>
+    <%= f.number_field :ballots %>
+  </div>
+  <div class="field">
+    <%= f.label :voters %><br>
+    <%= f.number_field :voters %>
+  </div>
+  <div class="field">
+    <%= f.label :province_id %><br>
+	<%= f.collection_select(:province_id, Province.all, :id, :name) %>	
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

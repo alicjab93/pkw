@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @constituency.number %>
+</p>
+
+<p>
+  <strong>Mandates:</strong>
+  <%= @constituency.mandates %>
+</p>
+
+<p>
+  <strong>Ballots:</strong>
+  <%= @constituency.ballots %>
+</p>
+
+<p>
+  <strong>Voters:</strong>
+  <%= @constituency.voters %>
+</p>
+
+<p>
+  <strong>Province:</strong>
+  <%= @constituency.province.name %>
+</p>
+
+<%= link_to 'Edit', edit_constituency_path(@constituency) %> |
+<%= link_to 'Back', constituencies_path %>
