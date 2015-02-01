@@ -20,6 +20,8 @@ class ProvincesController < ApplicationController
 
   # GET /provinces/1/edit
   def edit
+	@committees = {}
+	Committee.all.collect{|c| @committees[c.name] = c.id}
   end
 
   # POST /provinces
@@ -41,6 +43,7 @@ class ProvincesController < ApplicationController
   # PATCH/PUT /provinces/1
   # PATCH/PUT /provinces/1.json
   def update
+    handle_committees_provinces
     respond_to do |format|
       if @province.update(province_params)
         format.html { redirect_to @province, notice: 'Province was successfully updated.' }
@@ -52,6 +55,15 @@ class ProvincesController < ApplicationController
     end
   end
 
+  private
+	def handle_committees_provinces
+		if params['committee_ids']
+			@province.committees.clear
+			committees = params['committee_ids'].map { |id| Committee.find(id) }
+			@province.committees << committees
+		end
+	end
+  
   # DELETE /provinces/1
   # DELETE /provinces/1.json
   def destroy

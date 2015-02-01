@@ -15,6 +15,11 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <p>
+  <select id="committee_ids" name="committee_ids[]" multiple="multiple">
+	<%= options_for_select(@committees, @province.committees.collect {|d| d.id }) %>
+  </select>
+  </p>
   <div class="actions">
     <%= f.submit %>
   </div>
