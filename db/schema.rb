@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20150127232525) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "committees_provinces", id: false, force: :cascade do |t|
+    t.integer "province_id",  null: false
+    t.integer "committee_id", null: false
+  end
+
+  add_index "committees_provinces", ["province_id", "committee_id"], name: "index_committees_provinces_on_province_id_and_committee_id", unique: true
+
   create_table "constituencies", force: :cascade do |t|
     t.integer  "number"
     t.integer  "mandates"
@@ -30,17 +37,12 @@ ActiveRecord::Schema.define(version: 20150127232525) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "constituencies", ["province_id"], name: "index_constituencies_on_province_id"
+
   create_table "provinces", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "committees_provinces", id: false, force: :cascade do |t|
-    t.integer "province_id",  null: false
-    t.integer "committee_id", null: false
-  end
-
-  add_index "committees_provinces", ["province_id", "committee_id"], name: "index_committees_provinces_on_province_id_and_committee_id", unique: true
 
 end

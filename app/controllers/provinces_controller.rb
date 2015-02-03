@@ -16,6 +16,8 @@ class ProvincesController < ApplicationController
   # GET /provinces/new
   def new
     @province = Province.new
+	@committees = {}	
+	Committee.all.collect{|c| @committees[c.name] = c.id}
   end
 
   # GET /provinces/1/edit
