@@ -1,6 +1,9 @@
 <h1>Panel administracyjny</h1>
+
+<% if current_user.present? && current_user.role == 'admin' %>
 <ul>
 	<li><a href="committees">Komitety Wyborcze</a></li>
 	<li><a href="provinces">Województwa</a></li>
 	<li><a href="constituencies">Okręgi</a></li>	
 </ul>
+<% end %>
