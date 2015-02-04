@@ -1,6 +1,7 @@
 class ConstituenciesController < ApplicationController
   before_action :set_constituency, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
+  
   # GET /constituencies
   # GET /constituencies.json
   def index
