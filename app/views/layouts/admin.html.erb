@@ -7,16 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+  <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="../">PKW</a>
+        </div>
+        <div id="navbar-main" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to('Komitety',:committees) %></li>
+            <li><%= link_to('Województwa',:provinces) %></li>
+            <li><%= link_to('Okręgi',:constituencies) %></li>            
+          </ul>
 
-  <%= render 'devise/menu/login_items' %>   
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= render 'devise/menu/login_items' %></li>
+          </ul>
 
-  <ul class="hmenu">
-    <li><%= link_to('Komitety',:committees) %></li>
-    <li><%= link_to('Województwa',:provinces) %></li>
-    <li><%= link_to('Okręgi',:constituencies) %></li>
-  </ul> 
+        </div>
+      </div>
+    </div>
+  
+  <div id="main-container" class="container">
 
-  <%= yield %>
+  <%= yield %>    
+  </div>
 
 </body>
 </html>
