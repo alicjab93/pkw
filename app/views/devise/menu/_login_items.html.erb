@@ -1,9 +1,6 @@
+<div class="login">
 <% if user_signed_in? %>
-  <li> Zalogowany jako <b><%= current_user.email %></b>
-  <%= link_to('Wyloguj', destroy_user_session_path, :method => :delete) %>        
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Zaloguj', new_user_session_path)  %>  
-  </li>
+  Zalogowany jako <b><%= current_user.email %></b>
+  <%= link_to('Wyloguj', destroy_user_session_path, :method => :delete) %>
 <% end %>
+</div>

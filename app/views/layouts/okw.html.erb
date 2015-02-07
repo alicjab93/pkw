@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pkw</title>
+  <title>Panel administracyjny - PKW</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-    <ul class="hmenu">
-      <%= render 'devise/menu/login_items' %>
-    </ul>
+  <%= render 'devise/menu/login_items' %>   
 
-    <%= yield %>
+  <ul class="hmenu">
+  </ul> 
+
+  <%= yield %>
 
 </body>
 </html>

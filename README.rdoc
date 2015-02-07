@@ -29,4 +29,4 @@ Please feel free to use a different markup language if you do not plan to run
 
 User creation
 > rails console
-> User.create!({:email => "guy@gmail.com", :roles => ["admin"], :password => "111111", :password_confirmation => "111111" })
+> User.create!({:email => "guy@gmail.com", :role => "admin", :password => "111111", :password_confirmation => "111111" })
