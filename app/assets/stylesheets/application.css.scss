@@ -13,6 +13,16 @@
  *= require_tree .
  *= require_self
  */
+// Example using 'Cerulean' bootswatch
+//
+// First import cerulean variables
+@import "bootswatch/spacelab/variables";
 
-@import "bootstrap-sprockets"
-@import "bootstrap"
+// Then bootstrap itself
+@import "bootstrap";
+
+// And finally bootswatch style itself
+@import "bootswatch/spacelab/bootswatch";
+
+// Whatever application styles you have go last
+@import "base";
