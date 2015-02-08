@@ -22,7 +22,7 @@
 
 <p>
   <strong>Province:</strong>
-  <%= @constituency.province.name %>
+  <% if @constituency.province.present? %><%= @constituency.province.name %><% end %>
 </p>
 
 <%= link_to 'Edit', edit_constituency_path(@constituency) %> |

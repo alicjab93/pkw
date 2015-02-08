@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<% if current_user.role == 'admin' %>
   <div class="field">
     <%= f.label :number %><br>
     <%= f.number_field :number %>
@@ -20,10 +20,6 @@
     <%= f.number_field :mandates %>
   </div>
   <div class="field">
-    <%= f.label :ballots %><br>
-    <%= f.number_field :ballots %>
-  </div>
-  <div class="field">
     <%= f.label :voters %><br>
     <%= f.number_field :voters %>
   </div>
@@ -31,6 +27,12 @@
     <%= f.label :province_id %><br>
 	<%= f.collection_select(:province_id, Province.all, :id, :name) %>	
   </div>
+<% elsif current_user.role == 'okw' %>
+  <div class="field">
+    <%= f.label :ballots %><br>
+    <%= f.number_field :ballots %>
+  </div>
+<% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

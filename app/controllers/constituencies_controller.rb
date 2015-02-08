@@ -21,6 +21,8 @@ class ConstituenciesController < ApplicationController
 
   # GET /constituencies/1/edit
   def edit
+#    @constituency.province.build
+#    @constituency.committees.build
   end
 
   # POST /constituencies
