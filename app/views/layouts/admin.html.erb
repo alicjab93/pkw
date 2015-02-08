@@ -48,9 +48,9 @@
         <a class="navbar-brand" href="#">Pkw</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to('Komitety',:committees) %></li>
-            <li><%= link_to('Województwa',:provinces) %></li>
-            <li><%= link_to('Okręgi',:constituencies) %></li>    
+            <li class="<%= 'active' if params[:controller] == 'committees' %>"><%= link_to('Komitety',:committees) %></li>
+            <li class="<%= 'active' if params[:controller] == 'provinces' %>"><%= link_to('Województwa',:provinces) %></li>
+            <li class="<%= 'active' if params[:controller] == 'constituencies' %>"><%= link_to('Okręgi',:constituencies) %></li>    
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
