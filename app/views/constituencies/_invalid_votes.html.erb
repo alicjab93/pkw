@@ -1,0 +1,11 @@
+<% label = '' %>
+<% reason = invalid_vote.reason %>
+<% if reason.label.present? %><% label = reason.label %><% end %>
+<%#= debug(invalid_vote.reason.read_attribute(label)) %>
+<div class="form-group">
+  <%= f.label :quantity, label, class: "control-label col-sm-4" %>
+  <div class="col-sm-4">
+    <%= f.number_field :quantity, class: "form-control" %>
+    <%= f.hidden_field :reason_id %>  
+  </div>
+</div>

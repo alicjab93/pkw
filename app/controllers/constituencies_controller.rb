@@ -1,7 +1,8 @@
 class ConstituenciesController < ApplicationController
   before_action :authenticate_user!   
   before_action :set_constituency, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  load_and_authorize_resource :constituency
+  load_and_authorize_resource :invalid_vote, :through => :constituency
   
   # GET /constituencies
   # GET /constituencies.json
@@ -21,8 +22,22 @@ class ConstituenciesController < ApplicationController
 
   # GET /constituencies/1/edit
   def edit
-#    @constituency.province.build
-#    @constituency.committees.build
+    
+    # invalid votes per committee
+    @constituency.committees.each do |committee|
+      unless @constituency.valid_votes.find_by_committee_id committee.id
+        @constituency.valid_votes.build("committee_id" => committee.id)
+      end      
+    end
+    
+    # invalid votes per reason
+    @reasons = Reason.all
+    @reasons.each do |reason|
+      unless @constituency.invalid_votes.find_by_reason_id reason.id
+        @constituency.invalid_votes.build("reason_id" => reason.id)
+      end      
+    end
+    
   end
 
   # POST /constituencies
@@ -73,6 +88,7 @@ class ConstituenciesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def constituency_params
-      params.require(:constituency).permit(:number, :mandates, :ballots, :voters, :province_id)
-    end
+      params.require(:constituency).permit(:number, :mandates, :ballots, :voters, :province_id, 
+        valid_votes_attributes: [:id, :quantity, :committee_id], invalid_votes_attributes: [:id, :quantity, :reason_id])
+    end  
 end

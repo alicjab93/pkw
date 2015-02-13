@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @constituency %> |
-<%= link_to 'Back', constituencies_path %>
+<%= link_to 'Show', @constituency %>
+<% if can? :index, @constituency %>
+| <%= link_to 'Back', constituencies_path %>
+<% end %>

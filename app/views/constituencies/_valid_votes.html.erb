@@ -1,0 +1,10 @@
+<% label = '' %>
+<% committee = valid_vote.committee %>
+<% if committee.name.present? %><% label = committee.name %><% end %>
+<div class="form-group">
+  <%= f.label :quantity, label, class: "control-label col-sm-4" %>
+  <div class="col-sm-4">
+    <%= f.number_field :quantity, class: "form-control" %>
+    <%= f.hidden_field :committee_id %>  
+  </div>
+</div>
