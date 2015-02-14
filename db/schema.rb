@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212221413) do
+ActiveRecord::Schema.define(version: 20150214201518) do
 
   create_table "committees", force: :cascade do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150212221413) do
     t.integer  "user_id"
   end
 
+  add_index "constituencies", ["number", "province_id"], name: "index_constituencies_on_number_and_province_id", unique: true
   add_index "constituencies", ["province_id"], name: "index_constituencies_on_province_id"
   add_index "constituencies", ["user_id"], name: "index_constituencies_on_user_id", unique: true
 
@@ -56,6 +57,8 @@ ActiveRecord::Schema.define(version: 20150212221413) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "provinces", ["name"], name: "index_provinces_on_name", unique: true
 
   create_table "reasons", force: :cascade do |t|
     t.string   "label"
