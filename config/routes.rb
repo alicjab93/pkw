@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   resources :provinces
 
   resources :committees
-
+  
+  get '/report', to: 'report/base#index'
+  namespace :report do
+    resources :provinces
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

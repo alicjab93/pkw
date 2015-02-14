@@ -1,0 +1,2 @@
+module Report::ProvincesHelper
+end
