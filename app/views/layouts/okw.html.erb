@@ -61,6 +61,12 @@
     <div class="container content-main">
       <div class="row">
         <div class="col-lg-12">
+          <% if flash[:alert] %>
+            <p class="alert alert-danger" role="alert"><%= flash[:alert] %></p>
+          <% end %>
+          <% if flash[:notice] %>
+            <p class="alert alert-success" role="alert"><%= flash[:notice] %></p>
+          <% end %>
           <%= yield %>
         </div>
       </div><!--/row-->

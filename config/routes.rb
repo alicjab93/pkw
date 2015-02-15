@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  get 'voting', to: 'voting#edit'
+  match 'voting' => 'voting#update', :via => [:patch]
+  
   resources :reasons
 
   devise_for :users

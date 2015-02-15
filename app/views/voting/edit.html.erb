@@ -1,0 +1,8 @@
+<% unless @constituency.nil? || @constituency == 0 %>
+  <h1>Okręg nr <%= @constituency.number %>, <%= @constituency.province.name %></h1>
+  <%= render 'form' %>
+<% else %>
+  <h1>Komisja okręgowa</h1>
+  <h3>Użytkownik nie został przypisany do żadnego okręgu.</h3>
+  <h4>Skontaktuj się z administratorem</h4>
+<% end %>

@@ -4,7 +4,6 @@ class Report::BaseController < ApplicationController
   before_filter :verify_ckw
   private
   def verify_ckw
-    current_user.inspect
     redirect_to root_url unless current_user.role == "ckw"
   end  
   

@@ -1,9 +1,9 @@
 class ConstituenciesController < ApplicationController
+  before_filter :verify_admin  
   before_action :authenticate_user!   
   before_action :set_constituency, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource :constituency
-  load_and_authorize_resource :invalid_vote, :through => :constituency
-  
+  load_and_authorize_resource
+
   # GET /constituencies
   # GET /constituencies.json
   def index
@@ -22,28 +22,12 @@ class ConstituenciesController < ApplicationController
 
   # GET /constituencies/1/edit
   def edit
-    
-    # invalid votes per committee
-    @constituency.committees.each do |committee|
-      unless @constituency.valid_votes.find_by_committee_id committee.id
-        @constituency.valid_votes.build("committee_id" => committee.id)
-      end      
-    end
-    
-    # invalid votes per reason
-    @reasons = Reason.all
-    @reasons.each do |reason|
-      unless @constituency.invalid_votes.find_by_reason_id reason.id
-        @constituency.invalid_votes.build("reason_id" => reason.id)
-      end      
-    end
-    
   end
 
   # POST /constituencies
   # POST /constituencies.json
   def create
-    @constituency = Constituency.new(constituency_params)
+    @constituency = Constituency.new(constituency_params_create)
 
     respond_to do |format|
       if @constituency.save
@@ -60,7 +44,7 @@ class ConstituenciesController < ApplicationController
   # PATCH/PUT /constituencies/1.json
   def update
     respond_to do |format|
-      if @constituency.update(constituency_params)
+      if @constituency.update(constituency_params_update)
         format.html { redirect_to @constituency, notice: 'Constituency was successfully updated.' }
         format.json { render :show, status: :ok, location: @constituency }
       else
@@ -81,14 +65,20 @@ class ConstituenciesController < ApplicationController
   end
 
   private
+    def verify_admin
+      redirect_to root_url unless current_user.role == "admin"
+    end  
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_constituency
       @constituency = Constituency.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def constituency_params
-      params.require(:constituency).permit(:number, :mandates, :ballots, :voters, :province_id, 
-        valid_votes_attributes: [:id, :quantity, :committee_id], invalid_votes_attributes: [:id, :quantity, :reason_id])
+    def constituency_params_create
+      params.require(:constituency).permit(:number, :mandates, :voters, :province_id)
+    end  
+    def constituency_params_update
+      params.require(:constituency).permit(:mandates, :voters)
     end  
 end

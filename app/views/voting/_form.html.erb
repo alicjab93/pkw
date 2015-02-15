@@ -1,0 +1,42 @@
+<%= form_for @constituency, :url => {:controller => 'voting', :action => "update"}, :html => {:class => "form-horizontal"} do |f| %>
+  <% if @constituency.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@constituency.errors.count, "error") %> prohibited this constituency from being saved:</h2>
+
+      <ul>
+      <% @constituency.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-sm-6">
+    <h2>Głosy ważne</h2>    
+    <% @constituency.valid_votes.each do |valid_vote| %>
+      <%= f.fields_for :valid_votes, valid_vote do |builder| %>
+        <%= render "valid_votes", {:f => builder, :valid_vote=> valid_vote} %>
+      <% end %>          
+    <% end %>   
+  </div>
+  <div class="col-sm-6">
+    <h2>Wydane karty głosowania</h2>
+    <div class="form-group">
+      <%= f.label :ballots, 'Ilość', class: "control-label col-sm-4" %>
+      <div class="col-sm-4">
+        <%= f.number_field :ballots, class: "form-control" %>        
+      </div>
+    </div>
+    
+    <h2>Głosy nieważne</h2>    
+    <% @constituency.invalid_votes.each do |invalid_vote| %>
+      <%= f.fields_for :invalid_votes, invalid_vote do |builder| %>
+        <%= render "invalid_votes", {:f => builder, :invalid_vote=> invalid_vote} %>
+      <% end %>          
+    <% end %>       
+  </div>
+ <div class="form-group col-sm-12">
+  <div class="col-sm-4 actions">
+    <%= f.submit 'zapisz wyniki', class: "btn btn-default" %>
+  </div>
+ </div>
+<% end %>

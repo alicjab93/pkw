@@ -7,8 +7,8 @@ class Ability
 	if user.role == "admin"
 		can :manage, [Province, Committee, Constituency]
   elsif user.role == "okw"
-    can [:show, :update], Constituency, :user_id => user.id    
-    can [:manage, :add, :update, :show], [ValidVote,InvalidVote]
+    can [:manage], Constituency, :id => user.constituency_id 
+    can [:manage], [ValidVote, InvalidVote], :constituency_id => user.constituency_id 
 	end
 
   end
