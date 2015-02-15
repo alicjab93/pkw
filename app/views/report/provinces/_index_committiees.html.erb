@@ -1,0 +1,28 @@
+<div class="bs-component">
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr> 
+        <th>Nazwa komitetu</th>      
+        <th>Liczba uzyskanych głosów ważnych</th> 
+        <th>Procent głosów ważnych</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @committees.each do |committee| %>
+        <tr>         
+          <td><%= committee.name %></td>
+          <td><%= committee.valid_votes.sum('quantity') %></td>
+          <td><%= number_to_percentage(Float(committee.valid_votes.sum('quantity'))/(@valid_votes.sum('quantity')) * 100, precision: 2) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+          <td>Suma:</td>
+          <td><%= @valid_votes.sum('quantity') %></td>  
+          <td>100%</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
