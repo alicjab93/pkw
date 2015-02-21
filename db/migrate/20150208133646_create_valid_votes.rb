@@ -1,6 +1,6 @@
 class CreateValidVotes < ActiveRecord::Migration
   def self.up
-    create_table :valid_votes, :id => false do |t|
+    create_table :valid_votes do |t|
       t.integer :constituency_id
       t.integer :committee_id
       t.integer :quantity

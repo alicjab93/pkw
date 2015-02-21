@@ -35,12 +35,10 @@ ActiveRecord::Schema.define(version: 20150214201518) do
     t.integer  "province_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
   end
 
   add_index "constituencies", ["number", "province_id"], name: "index_constituencies_on_number_and_province_id", unique: true
   add_index "constituencies", ["province_id"], name: "index_constituencies_on_province_id"
-  add_index "constituencies", ["user_id"], name: "index_constituencies_on_user_id", unique: true
 
   create_table "invalid_votes", force: :cascade do |t|
     t.integer  "constituency_id"
@@ -80,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150214201518) do
     t.integer  "constituency_id"
   end
 
+  add_index "users", ["constituency_id"], name: "index_users_on_constituency_id", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
 
   create_table "valid_votes", force: :cascade do |t|

@@ -68,3 +68,16 @@ Constituency.all.each do |constituency|
     v.update_attribute(:quantity, Random.rand(1500))
   end
 end
+
+# przykladowi uzytkownicy
+if(!User.find_by(:email => "admin@pkw.gov.pl"))
+  User.create!({:email => "admin@pkw.gov.pl", :role => "admin", :password => "esperanza", :password_confirmation => "esperanza" })
+end
+
+if(!User.find_by(:email => "okw@pkw.gov.pl"))
+  User.create!({:email => "okw@pkw.gov.pl", :role => "okw", :password => "esperanza", :password_confirmation => "esperanza", :constituency_id => "1" })
+end
+
+if(!User.find_by(:email => "ckw@pkw.gov.pl"))
+  User.create!({:email => "ckw@pkw.gov.pl", :role => "ckw", :password => "esperanza", :password_confirmation => "esperanza" })
+end
