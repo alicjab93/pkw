@@ -1,7 +1,17 @@
+body, html {
+    height: 100%
+}
+
 footer {
-    margin: 5em 0;
+    text-align: right;
+    margin: 0 20px;
 }
 
 .content-main {
-    min-height: 250px;
+min-height: 85%;    
+}
+
+.container-fluid {
+    margin: 0 auto;
+    height: 100%;
 }
