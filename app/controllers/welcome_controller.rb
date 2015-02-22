@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
     elsif current_user.present? && current_user.role == 'okw'
       redirect_to :controller => 'voting', :action => 'edit'
     elsif current_user.present? && current_user.role == 'ckw'
-      redirect_to :controller => 'report/base', :action => 'index'
+      redirect_to :controller => 'report/provinces'
     end
   end    
   

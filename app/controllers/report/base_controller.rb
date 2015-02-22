@@ -8,7 +8,7 @@ class Report::BaseController < ApplicationController
   end  
   
   def index
-    @provinces = Province.all
+    redirect_to :controller => 'report/provinces'
   end    
 end
 end

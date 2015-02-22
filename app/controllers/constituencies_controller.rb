@@ -27,7 +27,7 @@ class ConstituenciesController < ApplicationController
   # POST /constituencies
   # POST /constituencies.json
   def create
-    @constituency = Constituency.new(constituency_params_create)
+    @constituency = Constituency.new(constituency_params)
 
     respond_to do |format|
       if @constituency.save
@@ -75,7 +75,7 @@ class ConstituenciesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def constituency_params_create
+    def constituency_params
       params.require(:constituency).permit(:number, :mandates, :voters, :province_id)
     end  
     def constituency_params_update
