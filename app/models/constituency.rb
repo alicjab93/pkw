@@ -6,4 +6,5 @@ class Constituency < ActiveRecord::Base
   has_many :invalid_votes
   accepts_nested_attributes_for :valid_votes
   accepts_nested_attributes_for :invalid_votes #, allow_destroy: true, reject_if: proc { |invalid_vote| invalid_vote[:name].blank? }
+  validates_uniqueness_of :number, :scope => :province_id
 end

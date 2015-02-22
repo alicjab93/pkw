@@ -1,26 +1,18 @@
 <%= form_for @constituency, :html => {:class => "form-horizontal"} do |f| %>
-  <% if @constituency.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@constituency.errors.count, "error") %> prohibited this constituency from being saved:</h2>
 
-      <ul>
-      <% @constituency.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'layouts/errors', object: @constituency %>
+
 <div class="col-sm-6">
-  <% if !@constituency.number %>
+  <% if action_name != 'edit' %>
   <div class="form-group">
-    <%= f.label :province_id, 'Województwo', class: "control-label col-sm-4" %>
+    <%= f.label :province_id, class: "control-label col-sm-4" %>
     <div class="col-sm-4">
 	<%= f.collection_select(:province_id, Province.all, :id, :name, {}, {:class => 'form-control col-sm-4', :required => true}) %>	      
     </div>    
   </div>  
   
   <div class="form-group">
-      <%= f.label :number, 'Numer', class: "control-label col-sm-4" %>
+      <%= f.label :number, class: "control-label col-sm-4" %>
     <div class="col-sm-4">
       <%= f.number_field :number, class: "form-control", :required => true %>      
     </div>
@@ -28,7 +20,7 @@
   <% end %>
 
   <div class="form-group">
-      <%= f.label :mandates, 'Ilość mandatów', class: "control-label col-sm-4" %>
+      <%= f.label :mandates, class: "control-label col-sm-4" %>
     <div class="col-sm-4">
       <%= f.number_field :mandates, class: "form-control" %>      
     </div>
@@ -36,7 +28,7 @@
 
 
   <div class="form-group">
-      <%= f.label :voters, 'Ilość uprawnionych do głosowania', class: "control-label col-sm-4" %>
+      <%= f.label :voters, class: "control-label col-sm-4" %>
     <div class="col-sm-4">
       <%= f.number_field :voters, class: "form-control" %>      
     </div>
@@ -47,7 +39,7 @@
     <%= link_to '<span class="glyphicon glyphicon-arrow-left"></span> powrót'.html_safe, constituencies_path, class: "btn btn-sm btn-primary" %>
   </div>
   <div class="col-sm-4">
-    <%= f.submit 'zapisz wyniki', class: "btn btn-default form-control" %>
+    <%= f.submit 'zapisz okręg', class: "btn btn-default form-control" %>
   </div>
  </div>
 </div>  

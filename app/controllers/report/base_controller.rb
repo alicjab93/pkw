@@ -8,7 +8,7 @@ class Report::BaseController < ApplicationController
   end  
   
   def index
-    redirect_to :controller => 'report/provinces'
+    redirect_to root_url
   end    
 end
 end

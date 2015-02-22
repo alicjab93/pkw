@@ -7,7 +7,7 @@ footer {
 }
 
 .content-main {
-min-height: 80%;    
+    min-height: 80%;    
 }
 
 .container-fluid {
@@ -21,4 +21,8 @@ min-height: 80%;
 
 .table td {
     text-transform: capitalize;
+}
+
+#form-errors {
+    margin: 2% 0;
 }

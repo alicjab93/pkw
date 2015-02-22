@@ -21,3 +21,20 @@
 
 pl:
   hello: "Witaj świecie"
+  activerecord:
+    models:
+      constituency: "Okręg"
+    attributes:
+      constituency:
+        province_id: "Województwo"          
+        number: "Numer"
+        mandates: "Ilość mandatów"
+        voters: "Ilość uprawnionych do głosowania"
+        ballots: "Ilość wydanych kart do głosowania"        
+    errors:
+      models:
+        constituency:
+          attributes:
+            number:
+              taken: "W wybranym województwie istnieje okręg o tym numerze"
+        
