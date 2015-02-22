@@ -1,8 +1,3 @@
 <h1>Okręg nr <%= @constituency.number %>, <%= @constituency.province.name %></h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @constituency %>
-<% if can? :index, @constituency %>
-| <%= link_to 'Back', constituencies_path %>
-<% end %>

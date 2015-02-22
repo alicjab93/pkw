@@ -10,25 +10,45 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.number_field :number %>
+<div class="col-sm-6">
+  <% if !@constituency.number %>
+  <div class="form-group">
+    <%= f.label :province_id, 'Województwo', class: "control-label col-sm-4" %>
+    <div class="col-sm-4">
+	<%= f.collection_select(:province_id, Province.all, :id, :name, {}, {:class => 'form-control col-sm-4', :required => true}) %>	      
+    </div>    
+  </div>  
+  
+  <div class="form-group">
+      <%= f.label :number, 'Numer', class: "control-label col-sm-4" %>
+    <div class="col-sm-4">
+      <%= f.number_field :number, class: "form-control", :required => true %>      
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :mandates %><br>
-    <%= f.number_field :mandates %>
+  <% end %>
+
+  <div class="form-group">
+      <%= f.label :mandates, 'Ilość mandatów', class: "control-label col-sm-4" %>
+    <div class="col-sm-4">
+      <%= f.number_field :mandates, class: "form-control" %>      
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :voters %><br>
-    <%= f.number_field :voters %>
+
+
+  <div class="form-group">
+      <%= f.label :voters, 'Ilość uprawnionych do głosowania', class: "control-label col-sm-4" %>
+    <div class="col-sm-4">
+      <%= f.number_field :voters, class: "form-control" %>      
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :province_id %><br>
-	<%= f.collection_select(:province_id, Province.all, :id, :name) %>	
+
+ <div class="form-group action">
+  <div class="col-sm-4 control-label">
+    <%= link_to '<span class="glyphicon glyphicon-arrow-left"></span> powrót'.html_safe, constituencies_path, class: "btn btn-sm btn-primary" %>
   </div>
- <div class="form-group col-sm-12">
-  <div class="col-sm-4 actions">
-    <%= f.submit 'zapisz wyniki', class: "btn btn-default" %>
+  <div class="col-sm-4">
+    <%= f.submit 'zapisz wyniki', class: "btn btn-default form-control" %>
   </div>
  </div>
+</div>  
 <% end %>
