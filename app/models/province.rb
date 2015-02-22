@@ -3,4 +3,5 @@ class Province < ActiveRecord::Base
   has_many :valid_votes, through: :constituencies
   has_many :invalid_votes, through: :constituencies
   has_many :constituencies
+  validates_uniqueness_of :name
 end

@@ -4,16 +4,16 @@
 
 <div class="col-sm-6">
   <div class="form-group">
-      <%= f.label :name, 'Nazwa', class: "control-label col-sm-4" %>
+      <%= f.label :name, class: "control-label col-sm-4" %>
     <div class="col-sm-6">
       <%= f.text_field :name, class: "form-control", :required => true %>      
     </div>
   </div>
 
   <div class="form-group">
-      <%= f.label :committees, 'Komitety', class: "control-label col-sm-4" %>
+      <%= f.label :committees, class: "control-label col-sm-4" %>
     <div class="col-sm-6" >
-      <select id="committee_ids" class="form-control" name="committee_ids[]" multiple="multiple">
+      <select id="committee_ids" size="8" class="form-control" name="committee_ids[]" multiple="multiple">
             <%= options_for_select(@committees, @province.committees.collect {|d| d.id }) %>
       </select>    
     </div>

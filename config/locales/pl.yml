@@ -24,10 +24,14 @@ pl:
   activerecord:
     models:
       committee: "Komitet"
+      province: "Województwo"
       constituency: "Okręg"
     attributes:
       committee:
         name: "Nazwa"        
+      province:
+        name: "Nazwa"        
+        committees: "Komitety"
       constituency:
         province_id: "Województwo"          
         number: "Numer"
@@ -40,6 +44,10 @@ pl:
           attributes:
             name:
               taken: "Komitet o takiej nazwie już istnieje."          
+        province:
+          attributes:
+            name:
+              taken: "Województwo o takiej nazwie już istnieje."          
         constituency:
           attributes:
             number:
