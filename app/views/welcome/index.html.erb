@@ -1,9 +1,19 @@
-<h1>Panel administracyjny</h1>
+<div class="page-header">
+  <h1>Panel administracyjny</h1>
+</div>
 
 <% if current_user.present? && current_user.role == 'admin' %>
-<ul>
-	<li><a href="committees">Komitety Wyborcze</a></li>
-	<li><a href="provinces">Województwa</a></li>
-	<li><a href="constituencies">Okręgi</a></li>	
-</ul>
+<div class="bs-component">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <a href="committees">Komitety Wyborcze</a>
+    </li>
+    <li class="list-group-item">
+      <a href="provinces">Województwa</a>
+    </li>
+    <li class="list-group-item">
+      <a href="constituencies">Okręgi</a>
+    </li>
+  </ul>
+</div>
 <% end %>
