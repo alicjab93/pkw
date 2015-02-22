@@ -21,6 +21,8 @@
 // Then bootstrap itself
 @import "bootstrap";
 
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
 // And finally bootswatch style itself
 @import "bootswatch/spacelab/bootswatch";
 

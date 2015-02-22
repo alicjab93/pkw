@@ -4,14 +4,17 @@
   
       <fieldset>
         <legend>Logowanie</legend>
+        
+        <%= render 'layouts/messages' %>       
+        
         <div class="form-group">
-          <%= f.label :email, class: "control-label col-lg-4" %>
+          <%= f.label :email, class: "control-label col-lg-3" %>
           <div class="col-lg-8">
             <%= f.email_field :email, autofocus: true, class: "form-control" %>
           </div>
         </div>
         <div class="form-group">
-          <%= f.label :password, class: "control-label col-lg-4" %>
+          <%= f.label :password, 'Hasło', class: "control-label col-lg-3" %>
           <div class="col-lg-8">
             <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
           </div>
@@ -24,8 +27,8 @@
           <% end -%>
         </div>
           <div class="actions">
-            <div class="col-lg-8 col-lg-offset-4">
-              <%= f.submit "Zaloguj", class: "btn btn-primary" %>              
+            <div class="col-lg-8 col-lg-offset-3">
+              <%= f.submit "Zaloguj się", class: "btn btn-primary" %>              
             </div>
 
           </div>        

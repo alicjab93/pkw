@@ -3,15 +3,18 @@ body, html {
 }
 
 footer {
-    text-align: right;
-    margin: 0 20px;
+    margin: 1% 0;
 }
 
 .content-main {
-min-height: 85%;    
+min-height: 80%;    
 }
 
 .container-fluid {
     margin: 0 auto;
     height: 100%;
+}
+
+#logut {
+    margin-left: 10px;
 }

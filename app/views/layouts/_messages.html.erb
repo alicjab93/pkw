@@ -1,0 +1,11 @@
+<% flash.each do |key, value| %>
+  <% @class = 'danger' %>
+  <% if flash[:notice] %>
+    <% @class = 'success' %>
+  <% end %>
+
+  <div class="alert alert-<%= @class %>">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <p><%= value %></p>
+  </div>
+<% end %>

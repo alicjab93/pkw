@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
 <div class="page-header">
-  <h1>Listing Constituencies</h1>
+  <h1>Okręgi</h1>
 </div>
 <div class="bs-component">
   <table class="table table-striped table-hover ">
     <thead>
       <tr>
-        <th>Province</th>        
-        <th>Number</th>
-        <th>Mandates</th>
-        <th>Voters</th>
-        <th>Ballots</th>        
+        <th>Województwo</th>        
+        <th>Numer</th>
+        <th>Ilość mandatów</th>
+        <th>Ilość uprawnionych do głosowania</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -22,7 +21,6 @@
           <td><%= constituency.number %></td>
           <td><%= constituency.mandates %></td>
           <td><%= constituency.voters %></td>
-          <td><%= constituency.ballots %></td>
           <td><%= link_to 'Show', constituency %></td>
           <td><%= link_to 'Edit', edit_constituency_path(constituency) %></td>
           <td><%= link_to 'Destroy', constituency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
