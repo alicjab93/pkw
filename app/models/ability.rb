@@ -9,6 +9,8 @@ class Ability
   elsif user.role == "okw"
     can [:manage], Constituency, :id => user.constituency_id 
     can [:manage], [ValidVote, InvalidVote], :constituency_id => user.constituency_id 
+  elsif user.role == "ckw"
+		can [:index, :show], [Province, Committee, Constituency]
 	end
 
   end
