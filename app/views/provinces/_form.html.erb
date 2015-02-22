@@ -1,4 +1,4 @@
-<%= form_for(@province) do |f| %>
+<%= form_for @province, :html => {:class => "form-horizontal"} do |f| %>
   <% if @province.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@province.errors.count, "error") %> prohibited this province from being saved:</h2>
@@ -10,17 +10,31 @@
       </ul>
     </div>
   <% end %>
+<div class="col-sm-6">
+  <div class="form-group">
+      <%= f.label :name, 'Nazwa', class: "control-label col-sm-4" %>
+    <div class="col-sm-6">
+      <%= f.text_field :name, class: "form-control", :required => true %>      
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+      <%= f.label :committees, 'Komitety', class: "control-label col-sm-4" %>
+    <div class="col-sm-6" >
+      <select id="committee_ids" class="form-control" name="committee_ids[]" multiple="multiple">
+            <%= options_for_select(@committees, @province.committees.collect {|d| d.id }) %>
+      </select>    
+    </div>
+  </div>  
+ 
+
+ <div class="form-group action">
+  <div class="col-sm-4 control-label">
+    <%= link_to '<span class="glyphicon glyphicon-arrow-left"></span> powrót'.html_safe, provinces_path, class: "btn btn-sm btn-primary" %>
   </div>
-  <p>
-  <select id="committee_ids" name="committee_ids[]" multiple="multiple">
-	<%= options_for_select(@committees, @province.committees.collect {|d| d.id }) %>
-  </select>
-  </p>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="col-sm-4">
+    <%= f.submit 'zapisz województwo', class: "btn btn-default form-control" %>
   </div>
+ </div>
+</div>
 <% end %>

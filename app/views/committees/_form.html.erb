@@ -1,4 +1,4 @@
-<%= form_for(@committee) do |f| %>
+<%= form_for @committee, :html => {:class => "form-horizontal"} do |f| %>
   <% if @committee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@committee.errors.count, "error") %> prohibited this committee from being saved:</h2>
@@ -11,15 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class="col-sm-6">
+  <div class="form-group">
+      <%= f.label :name, 'Nazwa', class: "control-label col-sm-4" %>
+    <div class="col-sm-6">
+      <%= f.text_field :name, class: "form-control", :required => true %>      
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :logo %><br>
-    <%= f.text_field :logo %>
+
+  <%#*<div class="field">%>
+    <%#= f.label :logo %><br>
+    <%#= f.text_field :logo %>
+  <%#*</div>%>
+    
+ <div class="form-group action">
+  <div class="col-sm-4 control-label">
+    <%= link_to '<span class="glyphicon glyphicon-arrow-left"></span> powrót'.html_safe, committees_path, class: "btn btn-sm btn-primary" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="col-sm-4">
+    <%= f.submit 'zapisz komitet', class: "btn btn-default form-control" %>
   </div>
+ </div>
+  
+</div>  
 <% end %>
