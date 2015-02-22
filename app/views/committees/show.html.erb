@@ -1,13 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% @provinces = @committee.provinces %>
+<div class="page-header">
+<h1><%= @committee.name %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @committee.name %>
-</p>
+<%#*<p>%>
+  <%#*<strong>Logo:</strong>%>
+  <%#= @committee.logo %>
+<%#*</p>%>
 
-<p>
-  <strong>Logo:</strong>
-  <%= @committee.logo %>
-</p>
-<%= link_to 'Edit', edit_committee_path(@committee) %> |
-<%= link_to 'Back', committees_path %>
+<h2>Województwa</h2>
+
+<%= render :file => '/provinces/_index' %>
+
+  <div class="col-sm-4 control-label">
+    <%= link_to '<span class="glyphicon glyphicon-arrow-left"></span> powrót'.html_safe, committees_path, class: "btn btn-sm btn-primary" %>
+  </div>

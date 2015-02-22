@@ -6,24 +6,4 @@
   &nbsp; <%= link_to '<span class="glyphicon glyphicon-plus"></span> dodaj'.html_safe, new_province_path, class: "btn btn-success btn-xs" %>
 </div>
 
-<div class="bs-component">
-  <table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th>Nazwa</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @provinces.each do |province| %>
-      <tr>
-        <td><%= province.name %></td>
-        <td class="col-md-1"><a href="<%= url_for :action => 'show', :id => province.id %>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span> pokaż</a></td>
-        <td class="col-md-1"><a href="<%= edit_province_path(province) %>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span>  edytuj</a></td>
-        <td class="col-md-1"><%= link_to '<span class="glyphicon glyphicon-remove"></span> usuń'.html_safe, province, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
+<%= render 'index' %>

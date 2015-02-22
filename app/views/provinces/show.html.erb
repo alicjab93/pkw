@@ -1,9 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+<h1>Województwo <%= @province.name %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @province.name %>
-</p>
+<h3>Komitety</h3>
 
-<%= link_to 'Edit', edit_province_path(@province) %> |
-<%= link_to 'Back', provinces_path %>
+<div class="bs-component">
+  <table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th>Logo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @province.committees.each do |committee| %>
+      <tr>
+        <td><%= committee.name %></td>
+        <td><%= committee.logo %></td>
+        <td class="col-md-1"><a href="<%= url_for :controller => 'committees', :action => 'show', :id => committee.id %>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span> pokaż</a></td>
+          <td class="col-md-1"><a href="<%= edit_committee_path(committee) %>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span>  edytuj</a></td>
+          <td class="col-md-1"><%= link_to '<span class="glyphicon glyphicon-remove"></span> usuń'.html_safe, committee, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+
+  <div class="col-sm-4 control-label">
+    <%= link_to '<span class="glyphicon glyphicon-arrow-left"></span> powrót'.html_safe, provinces_path, class: "btn btn-sm btn-primary" %>
+  </div>
+
+

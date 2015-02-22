@@ -1,29 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>Okręg nr <%= @constituency.number %>, <%= @constituency.province.name %></h1>  
+</div>
 
-<p>
-  <strong>Number:</strong>
-  <%= @constituency.number %>
-</p>
+<div class="col-lg-12" style="padding-bottom: 10px;">
 
-<p>
-  <strong>Mandates:</strong>
-  <%= @constituency.mandates %>
-</p>
+  <div class="col-lg-3 text-right"><b>Ilość mandatów:</b></div>
+  <div class="col-lg-9"><%= @constituency.mandates %></div>
+  
+</div>
 
-<p>
-  <strong>Ballots:</strong>
-  <%= @constituency.ballots %>
-</p>
+<div class="col-lg-12" style="padding-bottom: 25px;">
 
-<p>
-  <strong>Voters:</strong>
-  <%= @constituency.voters %>
-</p>
+  <div class="col-lg-3 text-right"><b>Ilość uprawnionych do głosowania:</b></div>
+  <div class="col-lg-9"><%= @constituency.voters %></div>
 
-<p>
-  <strong>Province:</strong>
-  <% if @constituency.province.present? %><%= @constituency.province.name %><% end %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_constituency_path(@constituency) %> |
-<%= link_to 'Back', constituencies_path %>
+  <div class="col-sm-4 control-label">
+    <%= link_to '<span class="glyphicon glyphicon-arrow-left"></span> powrót'.html_safe, constituencies_path, class: "btn btn-sm btn-primary" %>
+  </div>
