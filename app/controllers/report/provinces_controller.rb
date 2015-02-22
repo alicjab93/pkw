@@ -1,6 +1,5 @@
 module Report
-  class ProvincesController < BaseController
-    before_action :authenticate_user!  
+  class ProvincesController < BaseController  
     before_action :set_province, only: [:show]
     load_and_authorize_resource
 

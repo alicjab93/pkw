@@ -14,8 +14,8 @@
 
     <tbody>
       <% @constituencies.each do |constituency| %>
-        <tr>         
-          <td>Okręg nr <%= constituency.number %></td>
+        <tr>    
+          <td><%= link_to("Okręg nr #{constituency.number}", :controller => 'report/constituencies', :action => 'show', :id => constituency.id) %></td>
           <td><%= constituency.mandates %></td>
           <td><%= constituency.voters %></td>
           <td><%= constituency.ballots %></td>

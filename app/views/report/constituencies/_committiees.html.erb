@@ -9,16 +9,11 @@
     </thead>
 
     <tbody>
-      <% ids = @constituencies.pluck(:id) %>
-      <% @committees.each do |committee| %>
-        <% valid_votes = 0 %>
-        <% committee.valid_votes.select { |c| ids.include?(c.constituency_id) }.each do |valid_vote| %>
-          <% valid_votes += valid_vote.quantity %>
-        <%  end %>
+      <% @valid_votes.each do |valid_vote| %>
         <tr>         
-          <td><%= committee.name %></td>
-          <td><%= valid_votes %></td>
-          <td><%= number_to_percentage(Float(valid_votes)/(@valid_votes_sum) * 100, precision: 2) %></td>
+          <td><%= valid_vote.committee.name %></td>
+          <td><%= valid_vote.quantity %></td>
+          <td><%= number_to_percentage(Float(valid_vote.quantity)/(@valid_votes_sum) * 100, precision: 2) %></td>
         </tr>
       <% end %>
     </tbody>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/report', to: 'report/base#index'
   namespace :report do
     resources :provinces
+    resources :constituencies
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

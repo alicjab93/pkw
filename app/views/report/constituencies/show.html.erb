@@ -1,8 +1,5 @@
 <div class="page-header">
-  <h1>Województwo <%= @province.name %> - wyniki</h1>
+  <h1>Okręg nr <%= @constituency.number %>, <%= @constituency.province.name %> - wyniki</h1>
 </div>
 
-<%= render 'constituencies', {:@constituencies => @province.constituencies} %>
-
-<%= render 'committiees', {:@committees => @province.committees} %>
-
+<%= render 'committiees', {:@valid_votes => @constituency.valid_votes} %>
