@@ -1,0 +1,33 @@
+<div class="bs-component">
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr> 
+        <th>Nazwa komitetu</th>      
+        <th>Liczba uzyskanych głosów ważnych</th> 
+        <th>Procent głosów ważnych</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% ids = @constituencies.pluck(:id) %>
+      <% @committees.each do |committee| %>
+        <% valid_votes = 0 %>
+        <% committee.valid_votes.select { |c| ids.include?(c.constituency_id) }.each do |valid_vote| %>
+          <% valid_votes += valid_vote.quantity %>
+        <%  end %>
+        <tr>         
+          <td><%= committee.name %></td>
+          <td><%= valid_votes %></td>
+          <td><%= number_to_percentage(Float(valid_votes)/(@valid_votes_sum) * 100, precision: 2) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+          <td>Suma:</td>
+          <td><%= @valid_votes_sum %></td>  
+          <td>100%</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
