@@ -19,7 +19,7 @@
           <td><%= constituency.mandates %></td>
           <td><%= constituency.voters %></td>
           <td><%= constituency.ballots %></td>
-          <td><%= number_to_percentage(Float(constituency.ballots)/Float(constituency.voters) * 100, precision: 2) %></td>
+          <td><%= constituency.voters? ? number_to_percentage(constituency.ballots.to_f/constituency.voters.to_f * 100, precision: 2) : '-' %></td>
           <td><%= constituency.valid_votes.sum("quantity") %></td>
           <td><%= constituency.invalid_votes.sum("quantity") %></td>
         </tr>
