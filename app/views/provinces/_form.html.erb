@@ -1,15 +1,7 @@
 <%= form_for @province, :html => {:class => "form-horizontal"} do |f| %>
-  <% if @province.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@province.errors.count, "error") %> prohibited this province from being saved:</h2>
 
-      <ul>
-      <% @province.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'layouts/errors', object: @province %>
+
 <div class="col-sm-6">
   <div class="form-group">
       <%= f.label :name, 'Nazwa', class: "control-label col-sm-4" %>

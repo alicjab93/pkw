@@ -1,15 +1,7 @@
 <%= form_for @constituency, :url => {:controller => 'voting', :action => "update"}, :html => {:class => "form-horizontal"} do |f| %>
-  <% if @constituency.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@constituency.errors.count, "error") %> prohibited this constituency from being saved:</h2>
 
-      <ul>
-      <% @constituency.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'layouts/errors', object: @constituency %>
+
   <div class="col-sm-6">
     <h2>Głosy ważne</h2>    
     <% @constituency.valid_votes.each do |valid_vote| %>
