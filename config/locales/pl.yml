@@ -23,8 +23,11 @@ pl:
   hello: "Witaj świecie"
   activerecord:
     models:
+      committee: "Komitet"
       constituency: "Okręg"
     attributes:
+      committee:
+        name: "Nazwa"        
       constituency:
         province_id: "Województwo"          
         number: "Numer"
@@ -33,8 +36,12 @@ pl:
         ballots: "Ilość wydanych kart do głosowania"        
     errors:
       models:
+        committee:
+          attributes:
+            name:
+              taken: "Komitet o takiej nazwie już istnieje."          
         constituency:
           attributes:
             number:
               taken: "W wybranym województwie istnieje okręg o tym numerze"
-        
+ 
